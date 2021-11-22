@@ -29,6 +29,13 @@ const API = {
               }
         })
     },
+    editAPet:(petData,id,token)=>{
+        return axios.put(`${URL_PREFIX}/api/pets/${id}`,petData,{
+            headers:{
+                "Authorization": `Bearer ${token}`
+              }
+        })
+    },
     deletePet:(id,token)=>{
         return axios.delete(`${URL_PREFIX}/api/pets/${id}`,{headers:{
             "Authorization": `Bearer ${token}`
