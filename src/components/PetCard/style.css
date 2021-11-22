@@ -1,0 +1,14 @@
+.PetCard {
+    border:1px solid green;
+    box-shadow:5px 5px 12px 6px black;
+    flex-grow:1;
+    flex-basis:200px;
+}
+
+.PetCard.cat {
+    background:orange
+}
+
+.PetCard.dog {
+    background:red 
+}

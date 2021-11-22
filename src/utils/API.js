@@ -15,6 +15,16 @@ const API = {
     },
     signup:(usrData)=>{
         return  axios.post(`${URL_PREFIX}/signup`,usrData)
+    },
+    getAllPets:()=>{
+        return axios.get(`${URL_PREFIX}/api/pets`)
+    },
+    addAPet:(petData,token)=>{
+        return axios.post(`${URL_PREFIX}/api/pets`,petData,{
+            headers:{
+                "Authorization": `Bearer ${token}`
+              }
+        })
     }
 }
 

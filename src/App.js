@@ -1,8 +1,10 @@
 import React, {useState,useEffect} from "react";
 import API from "./utils/API"
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
-const axios = require("axios")
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
+import {BrowserRouter as Router, Switch,Route,Link,Redirect} from "react-router-dom"
+import Home from "./pages/Home";
+import AddAnimal from "./pages/AddAnimal";
 
 function App() {
   const [userState,setUserState]= useState({
@@ -105,7 +107,8 @@ function App() {
   }
 
   return (
-   <>
+
+      <Router>
     {!userState.email?(
     <div>
       <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState}/>
@@ -116,9 +119,24 @@ function App() {
 
       <h1>Welcome, {userState.email}! You are user number {userState.id}</h1>
       <button onClick = {logMeOut}>Logout</button>
+      <Link to="/">Home</Link>
+      <Link to="/profile">Profile</Link>
+      <Link to="/addanimal">/New Animal</Link>
     </div>
     )}
-   </>
+    <Switch>
+      <Route  exact path="/">
+        <Home/>
+      </Route>
+      <Route exact path="/profile">
+        <h1>profile Page</h1>
+      </Route>
+      <Route exact path="/addanimal">
+       {token?<AddAnimal user={userState} token={token}/>:<Redirect to="/"/>}
+      </Route>
+    </Switch>
+    </Router>
+
   );
 }
 

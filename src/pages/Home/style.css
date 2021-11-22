@@ -1,0 +1,11 @@
+.Home {
+    border:1px solid black;
+    
+}
+
+.Home .petsContainer {
+    display: flex;
+    flex-wrap:wrap;
+    width:80vw;
+    margin:0 auto;
+}
