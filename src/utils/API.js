@@ -16,6 +16,9 @@ const API = {
     signup:(usrData)=>{
         return  axios.post(`${URL_PREFIX}/signup`,usrData)
     },
+    getUserData:(id)=>{
+        return axios.get(`${URL_PREFIX}/api/users/${id}/pets`)
+    },
     getAllPets:()=>{
         return axios.get(`${URL_PREFIX}/api/pets`)
     },
@@ -25,6 +28,11 @@ const API = {
                 "Authorization": `Bearer ${token}`
               }
         })
+    },
+    deletePet:(id,token)=>{
+        return axios.delete(`${URL_PREFIX}/api/pets/${id}`,{headers:{
+            "Authorization": `Bearer ${token}`
+          }})
     }
 }
 

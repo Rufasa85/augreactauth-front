@@ -1,0 +1,8 @@
+.petContainer {
+    display: flex;
+    width: 70vw;
+    flex-wrap:wrap;
+     margin: 0 auto;
+     border-radius: 20px 0;
+     border: 10px solid black;
+}

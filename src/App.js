@@ -5,6 +5,7 @@ import SignupForm from "./components/SignupForm";
 import {BrowserRouter as Router, Switch,Route,Link,Redirect} from "react-router-dom"
 import Home from "./pages/Home";
 import AddAnimal from "./pages/AddAnimal";
+import Profile from "./pages/Profile";
 
 function App() {
   const [userState,setUserState]= useState({
@@ -120,16 +121,16 @@ function App() {
       <h1>Welcome, {userState.email}! You are user number {userState.id}</h1>
       <button onClick = {logMeOut}>Logout</button>
       <Link to="/">Home</Link>
-      <Link to="/profile">Profile</Link>
+      <Link to={`/profile/${userState.id}`}>Profile</Link>
       <Link to="/addanimal">/New Animal</Link>
     </div>
     )}
     <Switch>
       <Route  exact path="/">
-        <Home/>
+        <Home user={userState} token={token}/>
       </Route>
-      <Route exact path="/profile">
-        <h1>profile Page</h1>
+      <Route exact path="/profile/:id">
+        <Profile user={userState} token={token}/>
       </Route>
       <Route exact path="/addanimal">
        {token?<AddAnimal user={userState} token={token}/>:<Redirect to="/"/>}
